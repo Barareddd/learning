@@ -1,0 +1,24 @@
+<div class="dropdown">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search"
+    [(ngModel)]="searchText"
+    (input)="filterItems()"
+    (focus)="showDropdown()"
+    (blur)="hideDropdown()"
+  />
+  <div
+    class="dropdown-menu"
+    [class.show]="dropdownVisible"
+    *ngIf="filteredItems.length"
+  >
+    <button
+      class="dropdown-item"
+      *ngFor="let item of filteredItems"
+      (mousedown)="selectItem(item)"
+    >
+      {{ item }}
+    </button>
+  </div>
+</div>

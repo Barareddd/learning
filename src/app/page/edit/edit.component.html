@@ -1,0 +1,33 @@
+<div *ngFor="let person of personsData; let i = index">
+  <div class="d-flex justify-content-between">
+    <div>
+      <div><strong>Name:</strong> {{ person.name }}</div>
+      <div><strong>Phone Number:</strong> {{ person.phoneNumber }}</div>
+      <div><strong>Province:</strong> {{ person.province }}</div>
+    </div>
+    <button (click)="startEdit(i)" class="btn btn-outline-dark">Edit</button>
+  </div>
+  <hr />
+</div>
+
+<div *ngIf="editingPersonIndex !== null">
+  <h3>Edit Person</h3>
+  <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" />
+    </div>
+    <div>
+      <label>Phone Number</label>
+      <input type="text" formControlName="phoneNumber" class="form-control" />
+    </div>
+    <div>
+      <label>Province</label>
+      <input type="text" formControlName="province" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-dark">Save</button>
+    <button type="button" (click)="cancelEdit()" class="btn btn-outline-dark">
+      Cancel
+    </button>
+  </form>
+</div>

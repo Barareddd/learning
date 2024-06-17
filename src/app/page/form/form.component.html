@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row align-items-center">
+    <label class="col-auto">Name</label>
+    <div class="col">
+      <input type="text" class="form-control" formControlName="name" />
+      <div
+        *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+        class="text-danger"
+      >
+        Name is required.
+      </div>
+    </div>
+    <label class="col-auto">Phone-number</label>
+    <div class="col">
+      <input type="text" class="form-control" formControlName="phoneNumber" />
+      <div
+        *ngIf="
+          form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched
+        "
+        class="text-danger"
+      >
+        Phone-number is required.
+      </div>
+    </div>
+    <label class="col-auto">Province</label>
+    <div class="col">
+      <app-dropdown formControlName="province"></app-dropdown>
+      <div
+        *ngIf="form.get('province')?.invalid && form.get('province')?.touched"
+        class="text-danger"
+      >
+        Phone-number is required.
+      </div>
+    </div>
+    <div class="col-12 mt-3">
+      <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

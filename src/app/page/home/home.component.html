@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-center mb-5">Home page</h1>
+  <div class="row gap-3">
+    <button [routerLink]="['/home/form']" class="btn btn-outline-dark col-auto">
+      Go to Form
+    </button>
+    <button [routerLink]="['/home/edit']" class="btn btn-outline-dark col-auto">
+      Go to Edit
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+</div>
