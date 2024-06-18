@@ -16,8 +16,14 @@ export class FormComponent implements OnInit {
   personsData: Person[] = [];
   submitted: boolean = false;
   form: FormGroup;
-  @Input() editingPersonIndex: number | null = null;
-  @Output() editingFinished = new EventEmitter<number | null>();
+
+  editingPersonIndex: number | null = null;
+  personToForm = {};
+  @Input('editForm') editForm = false;
+  personIndex = 0;
+
+  @Output()
+  editingFinished = new EventEmitter<number | null>();
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
     this.form = this.fb.group({
@@ -28,9 +34,9 @@ export class FormComponent implements OnInit {
     this.personsData = dataService.getFormData();
   }
 
-  startEdit(index: number) {
-    this.editingPersonIndex = index;
-    const person = this.personsData[index];
+  startEdit() {
+    this.editingPersonIndex = this.personIndex;
+    const person = this.personsData[this.personIndex];
     this.form.setValue({
       name: person.name,
       phoneNumber: person.phoneNumber,
@@ -62,5 +68,10 @@ export class FormComponent implements OnInit {
     // คุณสามารถทำการเก็บค่าของฟอร์ม หรือส่งข้อมูลไปยังเซิร์ฟเวอร์ได้ที่นี่
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('this is data:', this.personsData);
+    console.log('this is person to form:', this.personToForm);
+    console.log('this is edit form:', this.editForm);
+    console.log('this is person index', this.personIndex);
+  }
 }

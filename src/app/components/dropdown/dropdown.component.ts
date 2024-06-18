@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -25,6 +25,7 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
   filteredItems: string[] = [];
   searchText: string = '';
   dropdownVisible: boolean = false;
+  @Input() placeHold: string = '';
   readOnly: boolean = false;
 
   private onChange: any = () => {};
@@ -74,5 +75,11 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.placeHold !== '') {
+      this.readOnly = true;
+      console.log(this.readOnly);
+    } else {
+    }
+  }
 }

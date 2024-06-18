@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1 class="text-center mb-5">
     TESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESB
   </h1>
@@ -11,18 +11,22 @@
     </button>
     <router-outlet></router-outlet>
   </div>
-</div>
-
-<!-- <div>
-  <div class="tab">
-    <div (click)="activeTab('1')">tab insert</div>
-    <div (click)="activeTab('2')">tab edit</div>
-  </div>
-  <div class="tab-conten" *ngIf="tab === '1'">
-    <app-form (output)="onHaveOutput(data)"></app-form>
-  </div>
-   <div class="tab-conten" *ngIf="tab === '2'">
-    <app-form [input]="data"></app-form>
-  </div>
-
 </div> -->
+
+<div class="container">
+  <h1 class="text-center mb-5">
+    TESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESB
+  </h1>
+  <div class="row gap-3">
+    <ul class="nav nav-underline">
+      <li class="nav-item">
+        <a class="nav-link" (click)="activate(1)">Form</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="activate(2)">Edit</a>
+      </li>
+    </ul>
+    <app-form *ngIf="activated == 1"></app-form>
+    <app-form *ngIf="activated == 2" [editForm]="true"></app-form>
+  </div>
+</div>

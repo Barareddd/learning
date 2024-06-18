@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  peopleShow = 'name';
-  people(value: any) {
-    this.peopleShow = value.name;
+  activated: number | null = null;
+  activate(tabs: number) {
+    if (tabs !== null) {
+      this.activated = tabs;
+      console.log(this.activated);
+    } else {
+    }
   }
   ngOnInit(): void {}
 }

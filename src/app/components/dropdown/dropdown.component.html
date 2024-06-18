@@ -2,17 +2,18 @@
   <input
     type="text"
     class="form-control"
-    placeholder="Search"
+    placeholder="{{ placeHold }}"
     [(ngModel)]="searchText"
     (input)="filterItems()"
     (focus)="showDropdown()"
     (blur)="hideDropdown()"
     (ngModelChange)="handleChange()"
+    [readonly]="readOnly"
   />
   <div
     class="dropdown-menu"
     [class.show]="dropdownVisible"
-    *ngIf="filteredItems.length"
+    *ngIf="filteredItems.length && !readOnly"
   >
     <button
       class="dropdown-item"
