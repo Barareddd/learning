@@ -1,5 +1,7 @@
 <div class="container">
-  <h1 class="text-center mb-5">Home page</h1>
+  <h1 class="text-center mb-5">
+    TESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESBTESB
+  </h1>
   <div class="row gap-3">
     <button [routerLink]="['/home/form']" class="btn btn-outline-dark col-auto">
       Go to Form
@@ -10,3 +12,17 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<!-- <div>
+  <div class="tab">
+    <div (click)="activeTab('1')">tab insert</div>
+    <div (click)="activeTab('2')">tab edit</div>
+  </div>
+  <div class="tab-conten" *ngIf="tab === '1'">
+    <app-form (output)="onHaveOutput(data)"></app-form>
+  </div>
+   <div class="tab-conten" *ngIf="tab === '2'">
+    <app-form [input]="data"></app-form>
+  </div>
+
+</div> -->

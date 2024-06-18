@@ -14,10 +14,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class DropdownComponent implements OnInit, ControlValueAccessor {
-  items: string[] = ['ปทุมธานี', 'กรุงเทพ', 'นนทบุรี', 'ลพบุรี'];
+  items: string[] = [
+    'ปทุมธานี',
+    'กรุงเทพ',
+    'นนทบุรี',
+    'ลพบุรี',
+    'สมุทรปราการ',
+    'พระนครศรีอยุธยา',
+  ];
   filteredItems: string[] = [];
   searchText: string = '';
   dropdownVisible: boolean = false;
+  readOnly: boolean = false;
 
   private onChange: any = () => {};
   private onTouched: any = () => {};
@@ -39,6 +47,12 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
     this.dropdownVisible = false;
   }
 
+  handleChange() {
+    if (!this.items.includes(this.searchText.toLocaleLowerCase())) {
+      this.onChange(null);
+    }
+    console.log(this.searchText);
+  }
   showDropdown() {
     this.dropdownVisible = true;
     this.filteredItems = this.items; // แสดงรายการทั้งหมดเมื่อแสดง dropdown

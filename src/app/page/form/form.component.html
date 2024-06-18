@@ -1,39 +1,47 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h4 *ngIf="editingPersonIndex !== null">Edit</h4>
   <div class="row align-items-center">
     <label class="col-auto">Name</label>
-    <div class="col">
+    <div class="col-2">
       <input type="text" class="form-control" formControlName="name" />
-      <div
-        *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
-        class="text-danger"
-      >
+      <div *ngIf="form.get('name')?.invalid && submitted" class="text-danger">
         Name is required.
       </div>
     </div>
     <label class="col-auto">Phone-number</label>
-    <div class="col">
+    <div class="col-2">
       <input type="text" class="form-control" formControlName="phoneNumber" />
       <div
-        *ngIf="
-          form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched
-        "
+        *ngIf="form.get('phoneNumber')?.invalid && submitted"
         class="text-danger"
       >
         Phone-number is required.
       </div>
     </div>
     <label class="col-auto">Province</label>
-    <div class="col">
+    <div class="col-2">
       <app-dropdown formControlName="province"></app-dropdown>
       <div
-        *ngIf="form.get('province')?.invalid && form.get('province')?.touched"
+        *ngIf="form.get('province')?.invalid && submitted"
         class="text-danger"
       >
-        Phone-number is required.
+        please select province.
       </div>
     </div>
-    <div class="col-12 mt-3">
-      <button class="btn btn-dark" type="submit">Submit</button>
+    <div *ngIf="editingPersonIndex == null" class="col-1">
+      <button type="submit" class="btn btn-dark w-100">Submit</button>
+    </div>
+    <div *ngIf="editingPersonIndex !== null" class="col-1">
+      <button type="submit" class="btn btn-dark w-100">Save</button>
+    </div>
+    <div *ngIf="editingPersonIndex !== null" class="col-1">
+      <button
+        type="button"
+        (click)="cancelEdit()"
+        class="btn btn-outline-dark w-100"
+      >
+        Cancel
+      </button>
     </div>
   </div>
 </form>
